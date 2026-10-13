@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>डिजिटल चुनावी प्रोफाइल - सरपंच प्रत्याशी</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Hind & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        },
+                        panchayat: {
+                            green: '#15803d',
+                            darkGreen: '#166534',
+                            gold: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Hind', 'Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Hind', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fef3c7 100%);
+        }
+        .active-nav {
+            color: #ea580c;
+            border-bottom: 3px solid #ea580c;
+            font-weight: 700;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(251, 146, 60, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-saffron-500 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-saffron-600 via-amber-600 to-panchayat-green text-white text-xs md:text-sm py-1.5 px-4 text-center font-medium shadow-inner">
+        <span><i class="fa-solid fa-bullhorn mr-2"></i> ग्राम पंचायत करेड़ा बुजुर्ग के विकास के लिए हमारा संकल्प! निष्पक्ष, ईमानदार और शिक्षित नेतृत्व चुनें।</span>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md transition-all duration-300" id="main-navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                
+                <!-- BRAND / CANDIDATE NAME -->
+               <a href="#home" class="flex items-center gap-3 group">
+    <div class="w-12 h-12 rounded-full bg-orange-100 border-2 border-orange-500 flex items-center justify-center text-orange-600 text-xl font-bold shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
+        <!-- आइकॉन हटाकर यहाँ इमेज लगा दी है -->
+        <img src="https://res.cloudinary.com/dd6akzezt/image/upload/f_auto/q_auto/photo_suwxa0.jpg" 
+             alt="अनिल कुमावत" 
+             class="w-full h-full object-cover object-top"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <!-- फ़ोटो लोड नहीं होने पर यह अक्षर दिखेगा -->
+        <span style="display:none;">अ</span>
+    </div>
+    <div>
+        <!-- यहाँ 'spa' स्पेलिंग मिस्टेक को सही करके 'span' कर दिया है -->
+        <span class="block text-xl md:text-2xl font-bold text-gray-900 leading-none">अनिल कुमावत</span>
+        <span class="text-xs md:text-sm font-semibold text-orange-600 tracking-wide">भावी प्रत्याशी - सरपंच</span>
+    </div>
+</a>
+
+                <!-- DESKTOP NAVIGATION TABS -->
+                <div class="hidden lg:flex items-center space-x-1 xl:space-x-3 font-semibold text-gray-700">
+                    <a href="#home" class="nav-link py-2 px-3 hover:text-saffron-600 transition-colors active-nav" onclick="setActiveNav(this)">गृह</a>
+                    <a href="#profile" class="nav-link py-2 px-3 hover:text-saffron-600 transition-colors" onclick="setActiveNav(this)">परिचय</a>
+                    <a href="#why-us" class="nav-link py-2 px-3 hover:text-saffron-600 transition-colors" onclick="setActiveNav(this)">हमें क्यों जिताएं?</a>
+                    <a href="#manifesto" class="nav-link py-2 px-3 hover:text-saffron-600 transition-colors" onclick="setActiveNav(this)">घोषणा-पत्र</a>
+                    <a href="#village" class="nav-link py-2 px-3 hover:text-saffron-600 transition-colors" onclick="setActiveNav(this)">हमारा गाँव</a>
+                    <a href="#contact" class="nav-link py-2 px-3 hover:text-saffron-600 transition-colors" onclick="setActiveNav(this)">सीधे जुड़ें</a>
+                </div>
+
+                <!-- RIGHT ACTION BUTTONS -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="openShareModal()" class="px-4 py-2 text-sm font-semibold text-saffron-700 bg-saffron-100 hover:bg-saffron-200 rounded-lg transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-share-nodes"></i> कार्ड शेयर करें
+                    </button>
+                    <a href="#contact" class="px-5 py-2.5 text-sm font-semibold text-white bg-saffron-600 hover:bg-saffron-700 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> सुझाव दें
+                    </a>
+                </div>
+
+                <!-- MOBILE HAMBURGER BUTTON -->
+                <div class="flex items-center lg:hidden gap-2">
+                    <button onclick="openShareModal()" class="md:hidden p-2 text-saffron-600 bg-saffron-50 rounded-lg">
+                        <i class="fa-solid fa-share-nodes text-lg"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2.5 rounded-lg text-gray-700 hover:text-saffron-600 hover:bg-saffron-50 focus:outline-none transition-colors" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-lg font-medium text-gray-800 hover:bg-saffron-50 hover:text-saffron-600" onclick="closeMobileMenu()">
+                <i class="fa-solid fa-house w-6 text-saffron-500"></i> गृह
+            </a>
+            <a href="#profile" class="mobile-nav-link block px-4 py-3 rounded-lg font-medium text-gray-800 hover:bg-saffron-50 hover:text-saffron-600" onclick="closeMobileMenu()">
+                <i class="fa-solid fa-user w-6 text-saffron-500"></i> परिचय
+            </a>
+            <a href="#why-us" class="mobile-nav-link block px-4 py-3 rounded-lg font-medium text-gray-800 hover:bg-saffron-50 hover:text-saffron-600" onclick="closeMobileMenu()">
+                <i class="fa-solid fa-award w-6 text-saffron-500"></i> हमें क्यों जिताएं?
+            </a>
+            <a href="#manifesto" class="mobile-nav-link block px-4 py-3 rounded-lg font-medium text-gray-800 hover:bg-saffron-50 hover:text-saffron-600" onclick="closeMobileMenu()">
+                <i class="fa-solid fa-scroll w-6 text-saffron-500"></i> हमारा घोषणा-पत्र
+            </a>
+            <a href="#village" class="mobile-nav-link block px-4 py-3 rounded-lg font-medium text-gray-800 hover:bg-saffron-50 hover:text-saffron-600" onclick="closeMobileMenu()">
+                <i class="fa-solid fa-map-location-dot w-6 text-saffron-500"></i> हमारा गाँव
+            </a>
+            <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-lg font-medium text-gray-800 hover:bg-saffron-50 hover:text-saffron-600" onclick="closeMobileMenu()">
+                <i class="fa-solid fa-comments w-6 text-saffron-500"></i> हमसे सीधा जुड़ें
+            </a>
+            <div class="pt-4 border-t border-gray-100 flex flex-col gap-2">
+                <a href="#contact" onclick="closeMobileMenu()" class="w-full text-center py-3 bg-saffron-600 text-white font-bold rounded-lg shadow">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> शिकायत / सुझाव दर्ज करें
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER SECTION -->
+    <section id="home" class="hero-gradient py-12 md:py-20 relative overflow-hidden border-b border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- HERO TEXT CONTENT -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-saffron-300 shadow-sm text-saffron-700 text-sm font-semibold">
+                        <i class="fa-solid fa-flag-checkered text-saffron-600"></i> ग्राम पंचायत  करेड़ा बुजुर्ग (वार्ड क्र. 1 से 7)
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                        विकास, पारदर्शिता और सम्मान <br>
+                        <span class="text-saffron-600">गाँव की प्रगति ही हमारी पहचान!</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-700 max-w-2xl leading-relaxed">
+                        नमस्कार! मैं <b>अनिल कुमावत</b>, आपके अपने ग्राम पंचायत को एक 'आदर्श एवं खुशहाल गाँव' बनाने के लिए दृढ़ संकल्पित हूँ। शिक्षा, स्वास्थ्य, पक्की सड़कें और सरकारी योजनाओं का लाभ हर घर तक पहुँचाना मेरी प्राथमिकता है।
+                    </p>
+
+                    <!-- ELECTION SYMBOL & BADGE -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border-l-4 border-saffron-600 inline-block text-left w-full sm:w-auto">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-3xl text-saffron-600">
+                                <i class="fa-solid fa-sun"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gray-500">भावी चुनाव चिन्ह</span>
+                                <h3 class="text-xl font-bold text-gray-900">coming soon</h3>
+                                <p class="text-xs text-saffron-700 font-medium">सबकी तरक्की का नया सवेरा!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA BUTTONS -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#manifesto" class="px-6 py-3.5 bg-saffron-600 hover:bg-saffron-700 text-white font-bold rounded-xl shadow-lg hover:shadow-saffron-500/30 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-scroll"></i> हमारा संकल्प पत्र देखें
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 font-bold border border-gray-300 rounded-xl shadow-md transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-green-600 text-xl"></i> सीधे बात करें
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HERO CANDIDATE IMAGE & CARD -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm sm:max-w-md">
+                        <!-- Decorative Backdrop Circle -->
+                        <div class="absolute -inset-2 bg-gradient-to-r from-saffron-500 to-amber-400 rounded-3xl blur-lg opacity-30 animate-pulse"></div>
+                        
+                        <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-white">
+                            <!-- Image Placeholder / Photo Container -->
+                           <div class="h-80 sm:h-96 bg-[#f7f9fa] relative flex items-center justify-center overflow-hidden rounded-2xl border border-gray-100">
+    <!-- object-cover को बदलकर object-contain कर दिया है ताकि फोटो पूरी दिखे और कटे नहीं -->
+    <img src="https://res.cloudinary.com/dd6akzezt/image/upload/f_auto/q_auto/post_qpdonv.png" 
+         alt="अनिल कुमावत" 
+         class="w-full h-full object-contain"
+         onerror="this.src='https://placehold.co/600x800/ea580c/ffffff?text=Candidate+Photo'">
+    
+    <!-- नीचे नाम वाली पट्टी का डिज़ाइन भी और सुंदर कर दिया है -->
+    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 text-white text-center">
+        <h2 class="text-2xl font-bold tracking-wide">अनिल कुमावत</h2>
+        <p class="text-xs text-amber-300 font-semibold mt-0.5">समाजसेवी</p>
+    </div>
+</div>
+                            
+                            <!-- Quick Stats Footer -->
+                            <div class="bg-saffron-50 p-4 border-t border-saffron-100 grid grid-cols-3 text-center text-xs font-bold text-gray-700">
+                                <div>
+                                    <span class="block text-saffron-600 text-lg">20+</span>
+                                    वर्ष सेवा अनुभव
+                                </div>
+                                <div class="border-x border-saffron-200">
+                                    <span class="block text-saffron-600 text-lg">100%</span>
+                                    ईमानदार प्रतिबद्धता
+                                </div>
+                                <div>
+                                    <span class="block text-saffron-600 text-lg">24x7</span>
+                                    जन-उपलब्धता
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: CANDIDATE PROFILE (परिचय) -->
+    <section id="profile" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-saffron-600 font-bold uppercase tracking-wider text-sm"><i class="fa-solid fa-user-check mr-1"></i> व्यक्तिगत परिचय</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2">सरपंच प्रत्याशी को जानें</h2>
+                <div class="w-20 h-1 bg-saffron-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Educational Background -->
+                <div class="bg-orange-50/50 p-6 rounded-2xl border border-saffron-100 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 bg-saffron-500 text-white rounded-xl flex items-center justify-center text-xl font-bold mb-4 shadow-md">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">उच्च शिक्षा एवं योग्यता</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        डिजिटल और आधुनिक तकनीकों की अच्छी समझ ताकि गाँव की योजनाओं का ऑनलाइन संचालन सुगमता से हो सके।
+                    </p>
+                    <ul class="text-xs text-gray-700 space-y-1.5 font-medium">
+                        <li><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i> शिक्षित एवं जागरूक नेतृत्व</li>
+                        <li><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i> सरकारी नियमों का गहरा ज्ञान</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Family Background -->
+                <div class="bg-orange-50/50 p-6 rounded-2xl border border-saffron-100 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 bg-saffron-500 text-white rounded-xl flex items-center justify-center text-xl font-bold mb-4 shadow-md">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">पारिवारिक पृष्ठभूमि</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        तीन पीढ़ियों से इसी गाँव की माटी से जुड़ा किसान परिवार।  पिताजी ने हमेशा गाँव की पंचायती और सामाजिक सरोकारों में निःस्वार्थ योगदान दिया है।
+                    </p>
+                    <ul class="text-xs text-gray-700 space-y-1.5 font-medium">
+                        <li><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i> संस्कारवान और मिलनसार स्वभाव</li>
+                        <li><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i> हर वर्ग के सुख-दुख में भागीदारी</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Social Work & Values -->
+                <div class="bg-orange-50/50 p-6 rounded-2xl border border-saffron-100 hover:shadow-lg transition-all md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-saffron-500 text-white rounded-xl flex items-center justify-center text-xl font-bold mb-4 shadow-md">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">सामाजिक कार्य व मूल्य</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        विगत 30 वर्षों से गाँव के युवाओं के लिए खेल प्रतियोगिताएं, पौधारोपण अभियान और जरूरतमंदों के लिए चिकित्सा शिविरों का निरंतर आयोजन।
+                    </p>
+                    <ul class="text-xs text-gray-700 space-y-1.5 font-medium">
+                        <li><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i> भ्रष्टाचार के प्रति जीरो टॉलरेंस</li>
+                        <li><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i> युवा और बुजुर्गों का समान सम्मान</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: WHY ELECT US (हमें क्यों जिताएं?) -->
+    <section id="why-us" class="py-16 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-saffron-600 font-bold uppercase tracking-wider text-sm"><i class="fa-solid fa-thumbs-up mr-1"></i> मजबूत आधार</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900">
+                        हमें क्यों चुनें?<br>
+                        <span class="text-saffron-600">हमारे 5 मुख्य स्तंभ</span>
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        गाँव का विकास केवल वादों से नहीं, बल्कि नीयत और कार्यकुशलता से होता है। हमारी प्राथमिकताएँ स्पष्ट हैं और इरादे मजबूत हैं।
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white rounded-xl shadow-sm border border-slate-200 flex items-start gap-3">
+                            <div class="p-2 bg-green-100 text-green-700 rounded-lg font-bold">01</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">100% पारदर्शिता (Transparency)</h4>
+                                <p class="text-xs text-gray-600">पंचायत के हर फंड का हिसाब नोटिस बोर्ड और डिजिटल लिंक पर सार्वजनिक किया जाएगा।</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl shadow-sm border border-slate-200 flex items-start gap-3">
+                            <div class="p-2 bg-saffron-100 text-saffron-700 rounded-lg font-bold">02</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">24/7 सुलभता और संवाद</h4>
+                                <p class="text-xs text-gray-600">बिना किसी बिचौलिये के सीधे सरपंच से मिलने और समस्या बताने की सुविधा।</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-xl shadow-sm border border-slate-200 flex items-start gap-3">
+                            <div class="p-2 bg-amber-100 text-amber-700 rounded-lg font-bold">03</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">आधुनिक और डिजिटल गाँव</h4>
+                                <p class="text-xs text-gray-600">सरकारी प्रमाण पत्र, पेंशन, और राशन योजना से जुड़े कार्य गाँव में ही ऑनलाइन हल होंगे।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 space-y-3">
+                        <div class="w-10 h-10 bg-saffron-100 text-saffron-600 rounded-lg flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900">साफ एवं बेदाग छवि</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            बिना किसी पक्षपात या भेदभाव के सभी 12 वार्डों में समान विकास कार्य करवाना हमारी पहली प्राथमिकता है।
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 space-y-3">
+                        <div class="w-10 h-10 bg-panchayat-green text-white rounded-lg flex items-center justify-center font-bold text-lg shadow">
+                            <i class="fa-solid fa-person-shelter"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900">गरीब व वंचित वर्ग को प्राथमिकता</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            प्रधानमंत्री आवास योजना, उज्ज्वला योजना और वृद्धावस्था पेंशन का लाभ हर पात्र व्यक्ति तक बिना रिश्वत मिलेगा।
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 space-y-3">
+                        <div class="w-10 h-10 bg-amber-500 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900">युवाओं के लिए रोजगार व खेल</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            खेल मैदान का जीर्णोद्धार, लाइब्रेरी की स्थापना और प्रतियोगी परीक्षाओं के लिए नि:शुल्क अध्ययन केंद्र।
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 space-y-3">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow">
+                            <i class="fa-solid fa-venus"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900">महिला सुरक्षा व स्वावलंबन</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            महिला स्वयं सहायता समूहों का गठन, सिलाई केंद्र और गाँव के मुख्य चौराहों पर सीसीटीवी कैमरे व स्ट्रीट लाइटें।
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: MANIFESTO / SANKALP PATRA (घोषणा-पत्र) -->
+    <section id="manifesto" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-saffron-600 font-bold uppercase tracking-wider text-sm"><i class="fa-solid fa-list-check mr-1"></i> हमारा संकल्प</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2">चुनाव घोषणा-पत्र (Manifesto)</h2>
+                <p class="text-gray-600 mt-2">जीतने के बाद पहले 100 दिनों में और अगले 5 वर्षों में गाँव के लिए तय किए गए कार्य:</p>
+            </div>
+
+            <!-- MANIFESTO CATEGORY TABS -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="manifesto-tabs">
+                <button onclick="filterManifesto('all')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-saffron-600 text-white shadow-md transition-all active-tab" data-target="all">
+                    सभी कार्य
+                </button>
+                <button onclick="filterManifesto('infra')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-gray-100 text-gray-700 hover:bg-saffron-100 transition-all" data-target="infra">
+                    <i class="fa-solid fa-road mr-1"></i> सड़क व नाली
+                </button>
+                <button onclick="filterManifesto('water')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-gray-100 text-gray-700 hover:bg-saffron-100 transition-all" data-target="water">
+                    <i class="fa-solid fa-droplet mr-1"></i> पेयजल एवं स्वच्छता
+                </button>
+                <button onclick="filterManifesto('edu')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-gray-100 text-gray-700 hover:bg-saffron-100 transition-all" data-target="edu">
+                    <i class="fa-solid fa-school mr-1"></i> शिक्षा व स्वास्थ्य
+                </button>
+                <button onclick="filterManifesto('digital')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-gray-100 text-gray-700 hover:bg-saffron-100 transition-all" data-target="digital">
+                    <i class="fa-solid fa-laptop-code mr-1"></i> ई-पंचायत
+                </button>
+            </div>
+
+            <!-- MANIFESTO GRID CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="manifesto-grid">
+                
+                <!-- Card 1 -->
+                <div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="infra">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 bg-saffron-500 text-white rounded-lg"><i class="fa-solid fa-road"></i></span>
+                        <h3 class="font-bold text-lg text-gray-900">सीसी रोड व ड्रेनेज सिस्टम</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        गाँव के हर वार्ड और मोहल्ले में पक्की सीसी सड़कों का निर्माण। जलभराव रोकने के लिए ढकी हुई अंडरग्राउंड नालियाँ।
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="water">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 bg-blue-500 text-white rounded-lg"><i class="fa-solid fa-faucet-drip"></i></span>
+                        <h3 class="font-bold text-lg text-gray-900">जल जीवन मिशन व शुद्ध पानी</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        हर घर नल से जल सुनिश्चित करना। गाँव में 2 नए आरओ (RO) वाटर प्लांट स्थापित करना ताकि हर परिवार को मिले शुद्ध पानी।
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="edu">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 bg-green-600 text-white rounded-lg"><i class="fa-solid fa-book-open-reader"></i></span>
+                        <h3 class="font-bold text-lg text-gray-900">स्मार्ट स्कूल व डिजिटल ई-लाइब्रेरी</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        सरकारी स्कूल का कायाकल्प, नए कंप्यूटर रूम और प्रतियोगी परीक्षाओं (SSC, Police, REET) की तैयारी के लिए निःशुल्क डिजिटल लाइब्रेरी।
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="edu">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 bg-red-500 text-white rounded-lg"><i class="fa-solid fa-hospital"></i></span>
+                        <h3 class="font-bold text-lg text-gray-900">प्राथमिक स्वास्थ्य केंद्र व एम्बुलेंस</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        उप-स्वास्थ्य केंद्र पर डॉक्टर व दवाइयों की 24 घंटे उपलब्धता। आपातकालीन समय के लिए ग्राम पंचायत की अपनी 24x7 फ्री एम्बुलेंस।
+                    </p>
+                </div>
+<div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="infra">
+    <div class="flex items-center gap-3 mb-3">
+        <!-- आइकॉन को लाइटबल्ब से बदलकर घर (fa-house) कर दिया है जो पक्के मकान को दर्शाता है -->
+        <span class="p-2.5 bg-orange-500 text-white rounded-lg">
+            <i class="fa-solid fa-house"></i>
+        </span>
+        <h3 class="font-bold text-lg text-gray-900">हर परिवार को मिले पक्के घर का सम्मान</h3>
+    </div>
+    <p class="text-sm text-gray-600 leading-relaxed">
+        गाँव के हर जरूरतमंद और बेघर परिवार को पक्का मकान मुहैया कराना, ताकि धूप, बरसात और हर मौसम की मार से सुरक्षित रहकर हर नागरिक आत्मसम्मान के साथ जी सके।
+    </p>
+</div>
+                <!-- Card 5 -->
+                <div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="infra">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 bg-amber-500 text-white rounded-lg"><i class="fa-solid fa-lightbulb"></i></span>
+                        <h3 class="font-bold text-lg text-gray-900">सोलर स्ट्रीट लाइट व रोशनी</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        गाँव के सभी मुख्य मार्गों, चौराहों और श्मशान/कब्रिस्तान पथ पर 100% सोलर स्ट्रीट लाइटें लगाना ताकि रात में अंधेरा न रहे।
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="manifesto-card bg-orange-50/40 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition-all" data-category="digital">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="p-2.5 bg-purple-600 text-white rounded-lg"><i class="fa-solid fa-headset"></i></span>
+                        <h3 class="font-bold text-lg text-gray-900">डिजिटल हेल्पडेस्क व ई-पंचायत</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        जाति, मूल निवास, जन्म प्रमाणपत्र और पेंशन फॉर्म भरने के लिए ग्राम पंचायत में मुफ़्त हेल्प-डेस्क सुविधा।
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: ABOUT VILLAGE (हमारा गाँव - ग्राम पंचायत) -->
+    <section id="village" class="py-16 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background Pattern Deco -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-saffron-500 font-bold uppercase tracking-wider text-sm"><i class="fa-solid fa-chart-pie mr-1"></i> ग्राम पंचायत अवलोकन</span>
+                <h2 class="text-3xl font-extrabold text-white mt-2">हमारी ग्राम पंचायत: एक नज़र में</h2>
+                <p class="text-gray-400 mt-2">हमारी प्राथमिकता इस पावन धरा को क्षेत्र की सबसे विकसित पंचायत बनाना है।</p>
+            </div>
+
+            <!-- VILLAGE STATS CARDS -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-12">
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700 shadow-inner">
+                    <i class="fa-solid fa-city text-3xl text-saffron-500 mb-2"></i>
+                    <h3 class="text-3xl font-black text-white">7</h3>
+                    <p class="text-xs text-gray-400 mt-1 font-medium">कुल वार्ड</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700 shadow-inner">
+                    <i class="fa-solid fa-users text-3xl text-amber-400 mb-2"></i>
+                    <h3 class="text-3xl font-black text-white">4,400+</h3>
+                    <p class="text-xs text-gray-400 mt-1 font-medium">कुल जनसंख्या</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700 shadow-inner">
+                    <i class="fa-solid fa-check-to-slot text-3xl text-green-400 mb-2"></i>
+                    <h3 class="text-3xl font-black text-white">2,400+</h3>
+                    <p class="text-xs text-gray-400 mt-1 font-medium">पंजीकृत मतदाता</p>
+                </div>
+
+                
+            </div>
+
+            <!-- VISION TARGET PROGRESS BARS -->
+            <div class="bg-slate-800/90 p-8 rounded-3xl border border-slate-700 max-w-4xl mx-auto shadow-2xl space-y-6">
+                <h3 class="text-xl font-bold text-center text-amber-300 mb-4">ग्राम पंचायत करेड़ा बुजुर्ग को आदर्श ग्राम पंचायत बनाने का लक्ष्य (Vision 2026-2031)</h3>
+
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span>100% पक्की सड़कों का लक्ष्य</span>
+                        <span class="text-saffron-400">100% पूर्ण करने का संकल्प</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-saffron-500 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span>हर घर नल से शुद्ध पेयजल</span>
+                        <span class="text-green-400">100% पूरा करेंगे</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-green-500 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span>सोलर ऊर्जा संचालित स्ट्रीट लाइट्स</span>
+                        <span class="text-amber-300">100% लक्ष्य</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-amber-400 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span> प्राथमिक स्वास्थ्य केंद्र व एम्बुलेंस का लक्ष्य</span>
+                        <span class="text-violet-400">100% पूर्ण करने का संकल्प</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-violet-500 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+                 <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span> हर परिवार को पक्का घर</span>
+                        <span class="text-red-400">100% पूर्ण करने का संकल्प</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-red-500 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span> ई-पंचायत का लक्ष्य</span>
+                        <span class="text-blue-400">100% पूर्ण करने का संकल्प</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                        <span> डिजिटल ई-लाइब्रेरी का लक्ष्य</span>
+                        <span class="text-pink-400">100% पूर्ण करने का संकल्प</span>
+                    </div>
+                    <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                        <div class="bg-pink-500 h-full rounded-full w-[100%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: DIRECT ENGAGEMENT & FEEDBACK (हमसे सीधा जुड़ें) -->
+    <section id="contact" class="py-16 bg-gradient-to-b from-orange-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-saffron-600 font-bold uppercase tracking-wider text-sm"><i class="fa-solid fa-comments mr-1"></i> आपका सुझाव, हमारा मार्गदर्शक</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2">अपनी समस्या या सुझाव सीधे भेजें</h2>
+                <p class="text-gray-600 mt-2">चुनाव से पहले और बाद में, आपकी आवाज़ सीधे सरपंच प्रत्याशी तक पहुँचेगी।</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- CONTACT FORM -->
+                <div class="lg:col-span-7 bg-white p-8 rounded-3xl shadow-xl border border-orange-100">
+                    <form id="grievance-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">आपका नाम *</label>
+                                <input type="text" id="voter-name" required placeholder="उदा. राजेश कुमार" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-saffron-500 focus:outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">मोबाइल नंबर *</label>
+                                <input type="tel" id="voter-phone" required pattern="[0-9]{10}" placeholder="10 अंकों का नंबर" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-saffron-500 focus:outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">वार्ड / मोहल्ला *</label>
+                                <select id="voter-ward" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-saffron-500 focus:outline-none transition-all">
+                                    <option value="वार्ड 1">वार्ड 1</option>
+                                    <option value="वार्ड 2">वार्ड 2</option>
+                                    <option value="वार्ड 3">वार्ड 3</option>
+                                    <option value="वार्ड 4">वार्ड 4</option>
+                                    <option value="अन्य मोहल्ला">अन्य मोहल्ला / क्षेत्र</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">विषय / श्रेणी</label>
+                                <select id="voter-category" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-saffron-500 focus:outline-none transition-all">
+                                    <option value="सड़क व पानी समस्या">सड़क व पानी समस्या</option>
+                                    <option value="विकास सुझाव">विकास का नया सुझाव</option>
+                                    <option value="सरकारी योजना मदद">सरकारी योजना में मदद</option>
+                                    <option value="अन्य">अन्य प्रश्न</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">आपका संदेश / समस्या *</label>
+                            <textarea id="voter-message" rows="4" required placeholder="यहाँ अपनी बात विस्तार से लिखें..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-saffron-500 focus:outline-none transition-all"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-saffron-600 hover:bg-saffron-700 text-white font-bold rounded-xl shadow-lg hover:shadow-saffron-500/30 transition-all flex items-center justify-center gap-2 text-base">
+                            <i class="fa-solid fa-paper-plane"></i> संदेश भेजें (WhatsApp पर खोलें)
+                        </button>
+                    </form>
+
+                    <!-- Alert Box Container -->
+                    <div id="form-response" class="hidden mt-4 p-4 rounded-xl text-center text-sm font-semibold"></div>
+                </div>
+
+                <!-- DIRECT HELPLINES & SOCIAL CONNECT -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Quick Call Box -->
+                    <div class="bg-saffron-600 text-white p-6 rounded-3xl shadow-lg relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-saffron-500 text-8xl opacity-30"><i class="fa-solid fa-phone-volume"></i></div>
+                        <h3 class="text-xl font-bold mb-2">सीधी बात - हेल्पलाइन</h3>
+                        <p class="text-xs text-saffron-100 mb-4">किसी भी समस्या या मदद के लिए दिन में कभी भी फोन करें:</p>
+                        
+                        <div class="space-y-3 relative z-10">
+                            <a href="tel:+919166154040" class="flex items-center gap-3 bg-white/10 p-3 rounded-xl hover:bg-white/20 transition-all">
+                                <div class="w-10 h-10 bg-white text-saffron-600 rounded-lg flex items-center justify-center font-bold"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <span class="block text-xs text-saffron-200">सरपंच प्रत्याशी</span>
+                                    <span class="font-bold text-lg">+91 9166154040</span>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/919166154040?text=जय%20श्री%20राम!%20सरपंच%20जी%20मुझे%20आपसे%20बात%20करनी%20है।" target="_blank" class="flex items-center gap-3 bg-green-500/20 p-3 rounded-xl hover:bg-green-500/30 transition-all border border-green-400/30">
+                                <div class="w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center font-bold text-xl"><i class="fa-brands fa-whatsapp"></i></div>
+                                <div>
+                                    <span class="block text-xs text-green-200">व्हाट्सएप सहायता</span>
+                                    <span class="font-bold text-lg">व्हाट्सएप पर चैट करें</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 text-center">
+                        <h4 class="font-bold text-gray-900 mb-3">सोशल मीडिया पर साथ जुड़ें</h4>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl hover:bg-blue-600 hover:text-white transition-all shadow-sm">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl hover:bg-pink-600 hover:text-white transition-all shadow-sm">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xl hover:bg-red-600 hover:text-white transition-all shadow-sm">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xl hover:bg-green-600 hover:text-white transition-all shadow-sm" onclick="openShareModal(); return false;">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Sharing Banner Card -->
+                    <div class="bg-amber-50 border border-amber-200 p-5 rounded-2xl flex items-center gap-4">
+                        <div class="w-16 h-16 bg-white p-2 rounded-xl shadow border border-amber-300 shrink-0">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://sarpanch-profile.example.com" alt="QR Code" class="w-full h-full">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">इस डिजिटल कार्ड को शेयर करें</h4>
+                            <p class="text-xs text-gray-600 mt-1">अपने गाँव के दोस्तों व व्हाट्सएप ग्रुप में लिंक भेजने के लिए स्कैन या शेयर करें।</p>
+                            <button onclick="openShareModal()" class="text-xs font-bold text-saffron-600 mt-1 hover:underline">शेयर मेनू खोलें &rarr;</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center gap-2 text-white font-bold text-xl">
+                <i class="fa-solid fa-person-vote text-saffron-500"></i> अनिल कुमावत - सरपंच प्रत्याशी
+            </div>
+            <p class="text-sm max-w-xl mx-auto text-gray-400">
+                ग्राम पंचायत करेड़ा बुजुर्ग के सर्वांगीण विकास एवं खुशहाली के लिए समर्पित निष्पक्ष नेतृत्व।
+            </p>
+            <div class="text-xs text-gray-500 pt-4 border-t border-gray-800">
+                &copy; 2026 चुनाव प्रचार डिजिटल प्रोफाइल. सर्वाधिकार सुरक्षित | गाँव का सच्चा विकास।
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHARE / QR MODAL -->
+    <div id="share-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl relative animate-scale-up">
+            <button onclick="closeShareModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center space-y-4">
+                <div class="w-12 h-12 bg-saffron-100 text-saffron-600 rounded-full flex items-center justify-center text-xl mx-auto">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">डिजिटल प्रोफाइल शेयर करें</h3>
+                <p class="text-xs text-gray-600">व्हाट्सएप या सोशल मीडिया पर गाँव वालों के साथ यह लिंक साझा करें:</p>
+                
+                <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 flex items-center justify-center">
+                    <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://sarpanch-profile.example.com" alt="QR Code" class="w-40 h-40 rounded-lg">
+                </div>
+
+                <div class="flex gap-2">
+                    <button onclick="copyPageLink()" class="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl text-xs transition-all">
+                        <i class="fa-solid fa-copy mr-1"></i> कॉपी लिंक
+                    </button>
+                    <a href="https://wa.me/?text=ग्राम%20पंचायत%20सरपंच%20पद%20के%20भावी%20उम्मीदवार%20अनिल%20कुमावत%20का%20डिजिटल%20घोषणा-पत्र%20और%20प्रोफाइल%20देखें:" target="_blank" class="flex-1 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> व्हाट्सएप
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // MOBILE MENU TOGGLE
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            menuIcon.className = 'fa-solid fa-bars text-2xl';
+        }
+
+        // NAVBAR ACTIVE TAB HIGHLIGHTING
+        function setActiveNav(element) {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active-nav'));
+            element.classList.add('active-nav');
+        }
+
+        // MANIFESTO TAB FILTERING
+        function filterManifesto(category) {
+            // Update active tab styling
+            const tabs = document.querySelectorAll('#manifesto-tabs .tab-btn');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-target') === category) {
+                    tab.className = 'tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-saffron-600 text-white shadow-md transition-all active-tab';
+                } else {
+                    tab.className = 'tab-btn px-5 py-2.5 rounded-full font-semibold text-sm bg-gray-100 text-gray-700 hover:bg-saffron-100 transition-all';
+                }
+            });
+
+            // Filter manifesto cards
+            const cards = document.querySelectorAll('.manifesto-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // SHARE MODAL CONTROLS
+        function openShareModal() {
+            document.getElementById('share-modal').classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            document.getElementById('share-modal').classList.add('hidden');
+        }
+
+        function copyPageLink() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            alert('डिजिटल प्रोफाइल लिंक कॉपी हो गया है!');
+        }
+
+        // FORM SUBMISSION HANDLING
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('voter-name').value;
+            const phone = document.getElementById('voter-phone').value;
+            const ward = document.getElementById('voter-ward').value;
+            const category = document.getElementById('voter-category').value;
+            const message = document.getElementById('voter-message').value;
+
+            // Construct WhatsApp Message Text
+            const waText = `नमस्कार अनिल कुमावत जी!%0A*नाम:* ${encodeURIComponent(name)}%0A*मोबाइल:* ${encodeURIComponent(phone)}%0A*वार्ड:* ${encodeURIComponent(ward)}%0A*विषय:* ${encodeURIComponent(category)}%0A*संदेश/सुझाव:* ${encodeURIComponent(message)}`;
+
+            // Open WhatsApp in new tab
+            const waUrl = `https://wa.me/919166154040?text=${waText}`;
+            window.open(waUrl, '_blank');
+
+            // Show confirmation in UI
+            const responseDiv = document.getElementById('form-response');
+            responseDiv.className = 'mt-4 p-4 rounded-xl text-center text-sm font-semibold bg-green-100 text-green-800 border border-green-200 block';
+            responseDiv.innerHTML = '<i class="fa-solid fa-circle-check text-green-600 mr-2"></i> आपका संदेश व्हाट्सएप पर भेज दिया गया है। धन्यवाद!';
+
+            document.getElementById('grievance-form').reset();
+        }
+
+        // Close modal on outside backdrop click
+        window.onclick = function(event) {
+            const modal = document.getElementById('share-modal');
+            if (event.target === modal) {
+                closeShareModal();
+            }
+        }
+    </script>
+</body>
+</html>
